@@ -3,6 +3,8 @@ import { getClient } from "@/libs/server-apollo-client";
 import { GET_POKEMON } from "@/graphql/queries";
 import PokemonPanel from "@/components/PokemonPanel";
 import { Pokemon } from "@/types/pokemon";
+import SearchBar from "@/components/SearchBar";
+import { Suspense } from "react";
 
 export default async function PokemonPage({
   params,
@@ -21,7 +23,10 @@ export default async function PokemonPage({
   }
 
   return (
-    <main>
+    <main className="flex flex-col items-center">
+      <Suspense fallback={<div>Loading search bar...</div>}>
+        <SearchBar></SearchBar>
+      </Suspense>
       <PokemonPanel pokemon={data.pokemon} />
     </main>
   );

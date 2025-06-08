@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ApolloWrapper from "@/providers/ApolloWrapper";
-import SearchBar from "@/components/SearchBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +33,6 @@ export default function RootLayout({
             <h1 className="text-3xl font-bold text-indigo-700 mb-6">
               Search Pokémon
             </h1>
-            <SearchBar />
             {children}
           </div>
         </body>
