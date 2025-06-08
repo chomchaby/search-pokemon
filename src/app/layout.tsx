@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ApolloWrapper from "@/providers/ApolloWrapper";
+import SearchBar from "@/components/SearchBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ApolloWrapper>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <div className="min-h-screen flex flex-col items-center justify-start py-10 px-4 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100">
+            <h1 className="text-3xl font-bold text-indigo-700 mb-6">
+              Search Pokémon
+            </h1>
+            <SearchBar />
+            {children}
+          </div>
+        </body>
+      </html>
+    </ApolloWrapper>
   );
 }
